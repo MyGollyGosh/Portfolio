@@ -1,6 +1,3 @@
-# Save the README content into a markdown (.md) file
-
-content = """
 # **Terraform AWS Infrastructure Deployment**
 
 This repository contains Terraform code to deploy a **task-listing application** on AWS using **Elastic Beanstalk, S3, RDS, ECR, and IAM roles**. 
