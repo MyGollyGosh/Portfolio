@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css" >
+    <title>Sign In</title>
+    <nav class="nav">
+        <button class='homepage'>
+            <a href="/index">
+               Homepage 
+            </a>
+        </button>
+    </nav>
+</head>
+<body>
+
+    <h2>Sign In</h2>
+
+    <form action="/sign-in" method="post">
+        <label for="email">Email:</label><br>
+        <input type="text" id="email" name="email" required><br><br>
+
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password" required><br><br>
+
+        <button type="submit" class="signin">Sign In</button>
+    </form>
+    <p class="sign_in_message">{{ sign_in_message }}</p>
+
+    <button class="createaccount">
+        <a href="/create-account">Don't have an account yet? Sign up</a>
+    </button>
+
+</body>
+</html>
