@@ -1,0 +1,9 @@
+<h1>Timeline</h1>
+<ul class="posts">
+  {{#each posts}}
+  <li>{{this.message}}</li> 
+  <li>{{this.likes}} likes</li>
+  {{/each}}
+</ul>
+
+<a class="new-post-link" href="/posts/new">New post</a>

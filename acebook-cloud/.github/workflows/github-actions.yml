@@ -1,0 +1,61 @@
+name: acebook-cloud-workflow
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+on: push
+jobs:
+  Run-tests:
+    runs-on: ubuntu-latest
+    steps:
+        - name: Checkout repo
+          uses: actions/checkout@v3
+        - name: start MongoDB
+          uses: supercharge/mongodb-github-action@1.10.0
+          with: 
+            mongodb-version: '5.0'
+        - name: Set up Node.js
+          uses: actions/setup-node@v3
+          with: 
+            node-version: '16'
+        - name: List repository contents
+          run: ls -la
+        - run: npm ci
+        - run: npm start & 
+        - run: npm run start:test &
+        - run: sleep 10
+        - run: npm run lint
+        - run: npm run test:unit
+        - run: npm run test:integration
+        - run: npm test
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+        - name: Configure AWS credentials
+          uses: aws-actions/configure-aws-credentials@v1
+          with:
+            role-to-assume: arn:aws:iam::664047078509:role/splh-acebook-githubactions-deploy
+            aws-region: eu-west-2
+            aws-access-key-id: ${{ secrets.AWS_SECRET_KEY }}
+            aws-secret-access-key: ${{ secrets.AWS_SECRET_VALUE }}
+        - run: aws s3 cp ./ s3://splh-acebook-bucket/
+      
+
+
+
+
+
+
+
+
+
+
+
+        # - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+        # - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
+        # - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+        #   uses: actions/checkout@v4
+        # - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
+        # - run: echo "🖥️ The workflow is now ready to test your code on the runner."
+        # - name: List files in the repository
+        #   run: |
+        #     ls ${{ github.workspace }}
+        # - run: echo "🍏 This job's status is ${{ job.status }}."
+  
