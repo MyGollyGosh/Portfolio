@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Your Listings</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/static/style.css" >
+        <nav class="nav">
+            <button class='homepage'>
+                <a href="/index">
+                Homepage 
+                </a>
+            </button>
+            <button class='mybookings'><a href="/my-bookings">My bookings</a></button>
+        </nav>
+        <script>
+            function confirmDelete(spaceId) {
+                if (confirm("Are you sure you want to delete this space?")) {
+                    window.location.href = "/delete-space/" + spaceId;
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <h2>Your Listings</h2>
+        <a href="/create-space"> 
+            <button id="createspace">Create new space</button>
+        </a>
+        <a href="/view-requests"> 
+            <button id="viewrequests">View your requests</button>
+        </a>
+        <!--
+            Loop through host's spaces and show space values to user
+        -->
+        <div class="list">
+            {% for space in spaces %}
+            <div class="card">
+                <p id="name">Name: {{ space.name }} </p>
+                <p id="description">Description: {{ space.description }} </p>
+                <p id="price">Price per Night: {{ space.price_per_night }}</p>
+                <p id="start">Availability Start: {{ space.availability_start }}</p>
+                <p id="end">Availability End: {{ space.availability_end }}</p>
+                
+                <a href="/delete-space/{{space.id}}">
+                    <button class="btn-delete" id="delete_{{space.id}}" onclick="confirmDelete()">Delete</button> <!--Need to add function, place holder for now-->
+                </a>
+                
+                <a href="/update-space/{{space.id}}">
+                    <button class="btn-update" id="update_{{space.id}}">Update</button> <!--Need to add function, place holder for now-->
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </body>
+</html>

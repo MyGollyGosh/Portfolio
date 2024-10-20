@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>MakersBnB</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/static/style.css" >
+    </head>
+    <body>
+        <button class='homepage'>
+            <a href="/index">
+                Homepage 
+            </a>
+        </button>
+        <h1>{{place.name}}</h1>
+        
+        <p>{{place.description}}</p>
+        <p>Price-per-night: {{place.price_per_night}}</p>
+        <p>Available-from: {{place.availability_start}} to {{place.availability_end}}</p>
+
+        <form action="/create-booking" method="post">
+            <label for="booking-date">Booking Date::</label><br>
+            <input type="date" id="booking-date" name="booking-date" required><br><br>
+            <input type="hidden" name="place_id" value='{{ place.id }}'>
+
+
+            <button type="submit" class="submit-booking">Create Booking</button>
+        </form>
+        <p class='error_message'>{{ error_message }}</p>
+    </body>
+</html>
