@@ -45,6 +45,6 @@ I am a passionate developer with a love for complex problem-solving! My interest
 ## Contact
 
 - Email: lachlan.hooker@hotmail.com
-- LinkedIn: [Lachlan Hooker](www.linkedin.com/in/lachlan-hooker)
+- LinkedIn: [Lachlan Hooker](https://www.linkedin.com/in/lachlan-hooker/)
 
 Feel free to reach out if you have any questions or if you'd like to connect and collaborate!
